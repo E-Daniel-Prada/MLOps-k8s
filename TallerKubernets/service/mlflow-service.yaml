@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mlflow-service
+spec:
+  selector:
+    app: mlflow  # Coincide con el label del Deployment
+  ports:
+    - port: 5000      # Puerto expuesto dentro del clúster
+      targetPort: 5000 # Puerto dentro del contenedor
+      nodePort: 30500  # Puerto expuesto fuera del clúster (opcional, puedes cambiar el número)
+  type: NodePort        # Tipo de servicio que hace accesible el servicio fuera del clúster

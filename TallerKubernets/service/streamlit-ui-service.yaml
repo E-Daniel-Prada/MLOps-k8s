@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: streamlit-ui
+spec:
+  selector:
+    app: streamlit-ui  # Asegúrate de que este selector coincida con el label del pod o deployment
+  ports:
+    - port: 8501         # Puerto que expone el servicio
+      targetPort: 8501   # Puerto al que se redirige dentro del pod
+      nodePort: 30501    # Puerto accesible desde fuera del clúster
+  type: NodePort         # Tipo de servicio que lo hace accesible desde fuera del clúster
